@@ -8,8 +8,8 @@
 
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 
-    <script src="tictactoe.js"></script>
-
+    <!--<script src="tictactoe.js"></script>-->
+    <script src="app.js"></script>
   </head>
 
   <body>
@@ -18,12 +18,18 @@
         <h1>Play Tic Tac Toe!</h1>
     </div>
 
-    <div class="prompt">
-        <h1>Choose....wisely!</h1>
-        <button class="btn btn-warning" value="X" id="X-btn">I choose X</button>
-        <button class="btn btn-warning" value="O" id="O-btn">I choose O</button>
+    <div class="prompt" id="choose-game">
+        <h1>Choose Game</h1>
+        <button class="btn btn-warning" value="Computer" id="computer-btn" onClick="chooseGame('computer');">Computer</button>
+        <button class="btn btn-warning" value="two-player" id="2-player-btn" onClick="chooseGame('twoPlayer');">2 Player</button>
     </div>
 
+    <div class="prompt" id="choose-symbol" hidden>
+        <h1>Choose Symbol</h1>
+        <button class="btn btn-warning" value="X" id="X-btn" onClick="choose('X');">X</button>
+        <button class="btn btn-warning" value="O" id="O-btn" onClick="choose('O');">O</button>
+    </div>
+    <input type="text" id="current-symbol" value='X' hidden>
     <div class="container-fluid" id="grid">
       <div class="grid">
         <div class="row top-row">
