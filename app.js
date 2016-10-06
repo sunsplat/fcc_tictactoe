@@ -1,12 +1,11 @@
 window.onload = function() {
 
-	var theParent = document.querySelector("#grid");
-	theParent.addEventListener('click', getId, false);
-
+	var allCells = document.querySelector("#grid");
+	allCells.addEventListener('click', getId, false);
+	var message = '';
 	var player = '';
 	var player2 = '';
 	var turn = false; 
-
 
 	var a1 = document.getElementById('0');
 	var a2 = document.getElementById('1');
@@ -22,21 +21,19 @@ window.onload = function() {
 	for (var i = 0; i < cells.length; i++) {
 		cells[i].innerHTML = '';
 	}
-	console.log(cells);
 }
 
 function chooseGame(type) {
 	if (type == 'computer') {
-		alert('You are X. X goes first.');
-		player = 'O';
-		player2 = 'X';
-		turn = 'player1';
-		playGame(player, player2, turn);
+		message = 'Your turn';
+		player = 'X';
+		player2 = 'O';
 		document.getElementById('choose-game').style.display = 'none';
 	} else {
 		document.getElementById('choose-symbol').style.display = 'block';
 		document.getElementById('choose-game').style.display = 'none';
 	}
+  	document.getElementById('message').innerHTML = message;
 }
 
 function choose(symbol) {
@@ -49,31 +46,23 @@ function choose(symbol) {
 	document.getElementById('choose-symbol').style.display = 'none';
 }
 
-function playGame(player1, player2, turn) {
-	if (turn == 'player1') {
-		document.getElementById('current-symbol').innerHTML = player1;
-	} else {
-		document.getElementById('current-symbol').innerHTML = player2;
-	}
-}
-
 function getId(event) {
 	if (event.target !== event.currentTarget) {
 		var cellId = event.target.id;
 		markSpot(cellId);
 
-    console.log(cellId);
+    		console.log(cellId);
 	}
-  event.stopPropagation();
+  	event.stopPropagation();
 }
 
 function markSpot(cellId) {
 	var symbol = document.getElementById('current-symbol').value;
 	document.getElementById(cellId).innerHTML = symbol;
 	if (symbol == 'X') {
-		symbol = 'O';
+		document.getElementById('current-symbol').value = 'O';
 	} else {
-		symbol = 'X';
+		document.getElementById('current-symbol').value = 'X';
 	}
 	console.log(symbol);
 }
